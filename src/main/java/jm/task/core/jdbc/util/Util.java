@@ -3,7 +3,6 @@ package jm.task.core.jdbc.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Util {
     private static final String USERNAME = "root";
@@ -24,5 +23,15 @@ public class Util {
 
     public static Connection getConnection() {
         return connection;
+    }
+
+    public static void connectionClose() {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
